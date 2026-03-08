@@ -4,7 +4,7 @@ export const SITE = {
   profile: "https://github.com/LyonMay",
   desc: "On all my grieves and reasons. A place to remember.",
   title: "On Grief And Reason",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "",
   lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 4,
