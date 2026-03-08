@@ -5,15 +5,53 @@ import LinkButton from "./LinkButton.astro";
 
 <div class="flex flex-wrap items-center gap-1">
   {
-    SOCIALS.map(social => (
-      <LinkButton
-        href={social.href}
-        class="p-2 hover:rotate-6 sm:p-1"
-        title={social.linkTitle}
-      >
-        <social.icon class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
-        <span class="sr-only">{social.linkTitle}</span>
-      </LinkButton>
-    ))
+    SOCIALS.map(social =>
+      social.name === "WeChat" ? (
+        <button
+          data-wechat-copy
+          class="group inline-flex items-center gap-1 relative p-2 hover:rotate-6 sm:p-1 hover:text-accent"
+          title="Copy WeChat ID"
+        >
+          <social.icon class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
+          <span class="sr-only">Copy WeChat ID</span>
+          <span
+            data-wechat-toast
+            class="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 rounded bg-foreground px-2 py-1 text-xs text-background opacity-0 transition-opacity whitespace-nowrap"
+          >
+            Copied: Lyon-May
+          </span>
+        </button>
+      ) : (
+        <LinkButton
+          href={social.href}
+          class="p-2 hover:rotate-6 sm:p-1"
+          title={social.linkTitle}
+        >
+          <social.icon class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
+          <span class="sr-only">{social.linkTitle}</span>
+        </LinkButton>
+      )
+    )
   }
 </div>
+
+<script>
+  function setupWeChatCopy() {
+    document.querySelectorAll("[data-wechat-copy]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText("Lyon-May");
+        const toast = btn.querySelector("[data-wechat-toast]");
+        if (toast) {
+          toast.classList.remove("opacity-0");
+          toast.classList.add("opacity-100");
+          setTimeout(() => {
+            toast.classList.remove("opacity-100");
+            toast.classList.add("opacity-0");
+          }, 1500);
+        }
+      });
+    });
+  }
+  setupWeChatCopy();
+  document.addEventListener("astro:after-swap", setupWeChatCopy);
+</script>

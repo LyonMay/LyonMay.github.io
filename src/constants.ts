@@ -20,7 +20,7 @@ interface Social {
 export const SOCIALS: Social[] = [
   {
     name: "Instagram",
-    href: "https://www.instagram.com/phoenixmay3/",
+    href: "https://www.instagram.com/lyonmay3/",
     linkTitle: `${SITE.title} on Instagram`,
     icon: IconInstagram,
   },
