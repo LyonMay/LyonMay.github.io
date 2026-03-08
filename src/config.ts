@@ -1,0 +1,23 @@
+export const SITE = {
+  website: "https://LyonMay.github.io/",
+  author: "Lyon May",
+  profile: "https://github.com/LyonMay",
+  desc: "On all my grieves and reasons. A place to remember.",
+  title: "On Grief And Reason",
+  ogImage: "astropaper-og.jpg",
+  lightAndDarkMode: true,
+  postPerIndex: 4,
+  postPerPage: 4,
+  scheduledPostMargin: 15 * 60 * 1000,
+  showArchives: true,
+  showBackButton: true,
+  editPost: {
+    enabled: false,
+    text: "Edit page",
+    url: "",
+  },
+  dynamicOgImage: true,
+  dir: "ltr",
+  lang: "en",
+  timezone: "Asia/Shanghai",
+} as const;

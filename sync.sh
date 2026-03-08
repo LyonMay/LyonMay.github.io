@@ -3,7 +3,7 @@
 # Usage: ./sync.sh [vault_path]
 
 VAULT_POSTS="${1:-../Vault/5 Blog/posts}"
-BLOG_CONTENT="src/content/blog"
+BLOG_CONTENT="src/data/blog"
 
 cd "$(dirname "$0")" || exit 1
 
