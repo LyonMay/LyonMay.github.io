@@ -2,7 +2,7 @@
 title: "Hello World"
 description: "My first blog post, published from Obsidian to Astro."
 pubDatetime: 2026-03-08T00:00:00Z
-tags: [introduction, meta]
+tags: [reason, grief]
 draft: false
 ---
 
