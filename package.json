@@ -1,0 +1,19 @@
+{
+  "name": "lm_blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "sync": "bash sync.sh",
+    "dev": "bash sync.sh && astro dev",
+    "build": "bash sync.sh && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^5.17.1",
+    "sharp": "^0.34.3"
+  }
+}
