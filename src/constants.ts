@@ -2,6 +2,8 @@ import type { Props } from "astro";
 import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
+import IconInstagram from "@/assets/icons/IconInstagram.svg";
+import IconWeChat from "@/assets/icons/IconWeChat.svg";
 import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
@@ -16,6 +18,18 @@ interface Social {
 }
 
 export const SOCIALS: Social[] = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/phoenixmay3/",
+    linkTitle: `${SITE.title} on Instagram`,
+    icon: IconInstagram,
+  },
+  {
+    name: "WeChat",
+    href: "#",
+    linkTitle: `${SITE.title} on WeChat`,
+    icon: IconWeChat,
+  },
   {
     name: "GitHub",
     href: "https://github.com/LyonMay",
