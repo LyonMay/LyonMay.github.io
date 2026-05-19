@@ -1,0 +1,72 @@
+---
+import { GISCUS } from "@/config";
+---
+
+{
+  GISCUS.enabled && (
+    <section class="giscus mt-8" data-pagefind-ignore />
+  )
+}
+
+<script
+  is:inline
+  define:vars={{ GISCUS }}
+  data-astro-rerun
+>
+  (function () {
+    if (!GISCUS.enabled) return;
+    const container = document.querySelector(".giscus");
+    if (!container) return;
+
+    // Avoid double-injection across view transitions
+    container.innerHTML = "";
+
+    const theme =
+      document.documentElement.getAttribute("data-theme") === "dark"
+        ? "dark"
+        : "light";
+
+    const s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    s.setAttribute("data-repo", GISCUS.repo);
+    s.setAttribute("data-repo-id", GISCUS.repoId);
+    s.setAttribute("data-category", GISCUS.category);
+    s.setAttribute("data-category-id", GISCUS.categoryId);
+    s.setAttribute("data-mapping", GISCUS.mapping);
+    s.setAttribute("data-strict", GISCUS.strict);
+    s.setAttribute("data-reactions-enabled", GISCUS.reactionsEnabled);
+    s.setAttribute("data-emit-metadata", GISCUS.emitMetadata);
+    s.setAttribute("data-input-position", GISCUS.inputPosition);
+    s.setAttribute("data-theme", theme);
+    s.setAttribute("data-lang", GISCUS.lang);
+    s.setAttribute("data-loading", GISCUS.loading);
+    container.appendChild(s);
+
+    // Sync theme changes to the giscus iframe via postMessage
+    const observer = new MutationObserver(() => {
+      const next =
+        document.documentElement.getAttribute("data-theme") === "dark"
+          ? "dark"
+          : "light";
+      const iframe = document.querySelector("iframe.giscus-frame");
+      if (!iframe) return;
+      iframe.contentWindow?.postMessage(
+        { giscus: { setConfig: { theme: next } } },
+        "https://giscus.app"
+      );
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    // Cleanup observer on Astro view transitions
+    document.addEventListener(
+      "astro:before-swap",
+      () => observer.disconnect(),
+      { once: true }
+    );
+  })();
+</script>

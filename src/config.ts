@@ -21,3 +21,18 @@ export const SITE = {
   lang: "en",
   timezone: "Asia/Shanghai",
 } as const;
+
+export const GISCUS = {
+  enabled: true,
+  repo: "LyonMay/LyonMay.github.io",
+  repoId: "R_kgDORhaTPQ",
+  category: "Announcements",
+  categoryId: "DIC_kwDORhaTPc4C9Xtz",
+  mapping: "pathname",
+  strict: "0",
+  reactionsEnabled: "1",
+  emitMetadata: "0",
+  inputPosition: "top",
+  lang: "en",
+  loading: "lazy",
+} as const;
